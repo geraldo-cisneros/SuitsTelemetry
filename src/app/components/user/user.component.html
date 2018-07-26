@@ -1,0 +1,72 @@
+
+
+  <div class = "button-layout">
+    <div layout-align="center center">
+    <button type="button" class="btn btn-primary btn-lg"> START</button> <br><br>
+    <button type="button" class="btn btn-primary btn-lg"> STOP </button> <br><br>
+    <button type="button" class="btn btn-primary btn-lg"> SAVE </button> <br><br>
+    <button type="button" class="btn btn-primary btn-lg"> ERROR</button> <br>
+  </div>
+  </div>
+  
+  
+
+
+<h1>{{title}}</h1>
+<ul>
+  <li>Age: {{age}}</li>
+  <li>Email: {{email}}</li>
+  <li>Address: {{address.street}} {{address.city}}, {{address.state}}</li>
+</ul>
+
+<button (click) ="onClick()"> Deploy Error</button>
+<button (click) ="toggleEdit()"> Edit User</button> <br>
+
+<div *ngIf = isEdit>
+<h1> Edit User </h1>
+  <form>
+    <div>
+      <label for = "name">Name: </label><br>
+      <input type= "text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+        <label for = "age">Age: </label><br>
+        <input type = "number"[(ngModel)]="age" name="age">
+    </div>
+    <div>
+        <label for = "email">Email: </label><br>
+        <input type= "text" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+        <label for = "email">Street: </label><br>
+        <input type= "text" [(ngModel)]="address.street" name="street">
+    </div>    <div>
+        <label for = "email">City: </label><br>
+        <input type= "text" [(ngModel)]="address.city" name="city">
+    </div>    <div>
+        <label for = "email">State: </label><br>
+        <input type= "text" [(ngModel)]="address.state" name="state">
+    </div>
+  </form>
+  </div>
+
+
+<h1>TEST LOG</h1>
+<form (submit) = "addLog(log.value)">
+  <div>
+    <label for = "log">Log:</label>
+    <input type = "text" #log>
+  </div>
+</form>
+<ul>
+  <li *ngFor = "let log of array; let i = index">
+    {{i+1}}: {{log}} <button (click) = "deleteLog(log)">X</button>
+  </li>
+ </ul>
+
+ <h1>Data Stream</h1>
+ <div *ngFor ="let post of posts">
+   <h4>{{post.title}}</h4>
+    <p>{{post.body}}</p>  
+ </div>
+ 
